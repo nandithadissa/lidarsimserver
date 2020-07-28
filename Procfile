@@ -1,1 +1,1 @@
-web: flask translate compile; gunicorn lidarserver:app
+web: flask translate compile; gunicorn lidar:app
