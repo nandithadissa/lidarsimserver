@@ -22,10 +22,11 @@ def simulate():
 		bg = float(form.background.data)
 		#print('average power:{}'.format(avgPower))
 		
-		run_simulation(avgPower,bg)	#result is an object of SimulationResultsForm
+		results=run_simulation(avgPower,bg)	#result is an object of SimulationResultsForm
 		
 		resultForm = SimulationResultsForm()
-		photopath = os.path.join(app.config["UPLOAD_FOLDER"],"result.jpg")
+		#photopath = os.path.join(app.config["UPLOAD_FOLDER"],"result.jpg")
+		photopath = os.path.join(app.config["UPLOAD_FOLDER"],results)
 		print(photopath)
 		resultForm.url = photopath
 		resultForm.avgPower = str(avgPower)

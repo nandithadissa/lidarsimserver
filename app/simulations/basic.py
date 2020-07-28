@@ -10,6 +10,7 @@ import matplotlib
 matplotlib.rc('font', **font)
 
 from scipy import constants
+from uuid import uuid4
 
 #blackbody radiation
 def bb(start=200,end=4000,step=10): #nm
@@ -101,8 +102,9 @@ def run_simulation(_Pavg=20,_BG=500):
 	plt.ylabel('# events per pulse')
 	plt.legend()
 	#plt.show()
-	plt.savefig('./app/static/SimResults/result.jpg')
-	url = './app/static/SimResults/result.jpg' 
+	filename = 'result_%s.jpg'%(str(uuid4().hex))
+	plt.savefig('./app/static/SimResults/%s'%filename)
+	url = filename#'./app/static/SimResults/%s'%filename 
 	return url
 
 	
