@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block app_content %}
+	<div class="container-fluid">
+		<div class="column">
+			<div class="col-md-4 col-sm-5">
+				<h3>Simulation Results</h3>
+            		<h4>Average Power (mW):{{ form.avgPower}}</h4>
+            		<h4>Background Power (W/m2):{{ form.background}}</h4>
+					<img src={{form.url}} class="img-fluid" >
+					<p> Number of event per pixel at different background levels </p>
+			</div>
+		</div>
+	</div>
+{% endblock %}

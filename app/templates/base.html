@@ -1,0 +1,74 @@
+{%- extends "bootstrap/base.html" %}
+
+<link href="/static/css/style.css" rel="stylesheet" type="text/css">
+
+{% block title %}
+	
+      {% if title %}
+      {{ title }} - Voxtel Lidar Simulations 
+      {% else %}
+      	Lidar Simulation Application
+      {% endif %}
+{%- endblock %}
+
+{% block navbar %}
+	<header>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url_for('index') }}">Home</a>
+				<a class="navbar-brand" href="{{ url_for('simulate') }}">Run Simulation</a>
+				<a class="navbar-brand" href="">Wiki</a>
+				<a class="navbar-brand" href="">Help</a>
+				<a class="navbar-brand" href="">References</a>
+            </div>
+        </div>
+    </nav>
+</header>
+{% endblock %}
+
+{% block content %}
+			<div class="jumbotron text-center" style="margin-botton:0">
+			<h1>Lidar Simulation App</h1>
+			<h3>A complete Lidar Simulation Package</h3>
+			<p id="version"></p>
+			<script>
+					getVersion()
+					function getVersion() {
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+    				if (this.readyState == 4 && this.status == 200) {
+      					document.getElementById("version").innerHTML = "version:" + this.responseText;
+    					}
+  					};
+  					xhttp.open("GET", "/version", true);
+  					xhttp.send();
+					}
+			</script>
+	
+	</div>
+			<p>	
+				 {% block app_content %}
+						<h4> <center> Usage: Click <a class="nav-link" href="{{ url_for('simulate')}}">Run Simulation</a> and simulation parameters</center></h3>
+				 {% endblock app_content %}
+			</p>
+
+			<p>
+			 {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                <ul>
+                    	{% for message in messages %}
+                    	<li>{{ message }}</li>
+                    	{% endfor %}
+				</ul>
+                    	{% endif %}
+				{% endwith %}
+			</p>	
+
+{%- endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block app_content %}
+	<div class="column">
+		<div class="col-md-2">
+			{{ wtf.quick_form(form)}}
+		</div>
+	</div>
+			
+		<!--auto fill the data fields with values -->
+		<script>
+		</script>
+	
+	<div class="column">
+		<div class="col-md-2">
+			<a href="" class="logo"><img src="/static/img/lidar.jpg"></a>
+		</div>
+	</div>
+
+{% endblock %}
