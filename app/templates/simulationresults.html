@@ -1,22 +1,26 @@
 {% extends "base.html" %}
 {% block app_content %}
 	<div class="container-fluid">
-		<div class="column">
-			<div class="col-md-4 col-sm-5">
-				<h3>Simulation Results</h3>
+		<h3>Simulation Results</h3>
             		<!--<h4>Average Power (mW):{{ form.avgPower}}</h4>-->
             		<!--<h4>Background Power (W/m2):{{ form.background}}</h4>-->
-					<ul></ul>
-					<h4> Number of signal and noise event per pixel at background </h4>
+		<div class="column">
+			<div class="col-md-4 col-sm-5">
+					<h4> Number of signal and noise event per pixel </h4>
 					<img src={{form.url_sn_events}} class="img-fluid" >
-					<ul></ul>
-					<h4> Number of snr </h4>
+					<h4> S/N per pulse</h4>
 					<img src={{form.url_snr}} class="img-fluid" >
-					<ul></ul>
-					<h4> Number of stats </h4>
+			</div>
+		</div>
+		<div class="column">
+			<div class="col-md-4 col-sm-5">
+					<h4> Probability of signal and noise event within the Gate Time  </h4>
 					<img src={{form.url_stats}} class="img-fluid" >
-					<ul></ul>
-					<h4> Number of tcspc stats </h4>
+			</div>
+		</div>
+		<div class="column">
+			<div class="col-md-4 col-sm-5">
+					<h4> Improvement of the S/N using multi-laser shots in TCSPC mode </h4>
 					<img src={{form.url_tcspc}} class="img-fluid" >
 			</div>
 		</div>

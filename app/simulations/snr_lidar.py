@@ -15,6 +15,7 @@ import matplotlib
 matplotlib.rc('font', **font)
 from scipy import constants
 import math
+import time
 
 from uuid import uuid4
 
@@ -106,7 +107,8 @@ def run_simulation(params):	#class object of the Params
 	NoiseEvents_per_pulse  = [n*tmeasure for n in Pnoise]
 
 	SNR = [10*np.log10(s/n) for s,n in zip(SignalEvents_per_pulse,NoiseEvents_per_pulse)]
-	
+
+	plt.close()	
 	plt.loglog(D,SignalEvents_per_pulse,label='signal events')
 	plt.loglog(D,NoiseEvents_per_pulse,label='noise events')
 	plt.grid(b=True, which='major', color='k', linestyle='-')
@@ -118,6 +120,8 @@ def run_simulation(params):	#class object of the Params
 	#plt.show()
 	url_sn_events = 'result_%s.jpg'%(str(uuid4().hex))
 	plt.savefig('./app/static/SimResults/%s'%url_sn_events)
+	
+	time.sleep(1)
 
 	plt.close()
 	#s/n
@@ -132,12 +136,15 @@ def run_simulation(params):	#class object of the Params
 	url_snr = 'result_%s.jpg'%(str(uuid4().hex))
 	plt.savefig('./app/static/SimResults/%s'%url_snr)
 
+	time.sleep(1)
 	#run stats
 	url_stats=stats(D,SignalEvents_per_pulse,NoiseEvents_per_pulse,params)
 
+	time.sleep(1)
 	#run tcspc
 	url_tcspc=tcspc(D,SignalEvents_per_pulse,NoiseEvents_per_pulse,params)
 
+	time.sleep(1)
 	#return D,SignalEvents_per_pulse,NoiseEvents_per_pulse
 	return url_sn_events, url_snr, url_stats, url_tcspc
 
