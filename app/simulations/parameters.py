@@ -21,6 +21,7 @@ class Params(object):
 	DCR		=		1E3		# cp/um2, average DCR per pixel
 	gateTime = 		1		# us, range gate time
 	registerWidth = 12		# #-bits, counter size
+	laserShots = 10			# max number of laser shots
 	
 class Results(object):
 	'''holds the urls'''

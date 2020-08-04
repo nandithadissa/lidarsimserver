@@ -25,6 +25,7 @@ class SimulationParamsForm(FlaskForm):
 	DCR = StringField('DCR (cp/um2)', validators= [DataRequired(), Length(max=32)], default=1000)
 	gateTime = StringField('Gate time (us)', validators= [DataRequired(), Length(max=32)], default=1)
 	registerWidth = StringField('# bits in counter ', validators= [DataRequired(), Length(max=32)], default=12)
+	laserShots = StringField('Laser shots in TCSPC mode ', validators= [DataRequired(), Length(max=32)], default=10)
 	submit = SubmitField('Run')
 
 #view simulation results

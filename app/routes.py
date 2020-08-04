@@ -37,6 +37,7 @@ def simulate():
 		params.DCR = float(form.DCR.data)
 		params.gateTime = float(form.gateTime.data)
 		params.registerWidth = float(form.registerWidth.data)
+		params.laserShots = float(form.laserShots.data)
 		
 		#print('average power:{}'.format(avgPower))
 		url_sn_events,url_snr,url_stats,url_tcspc=run_simulation(params)	#result is an object of SimulationResultsForm

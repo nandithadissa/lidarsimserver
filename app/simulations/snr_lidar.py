@@ -201,13 +201,16 @@ def tcspc(D,SignalEvents,NoiseEvents,params): #per pulse
 	C = constants.c						#speed of light
 	#signal_mean = [2*d/C for d in D] 	#time the signal arrives 
 	tmeasure = params.gateTime*1E-6 #s
-	
+	shots = int(params.laserShots)	
+	shot_inc = int(shots/10)
+
 	counter_bits = params.registerWidth
 	bins = 2**12
 	bin_time = 	tmeasure/2**12 #number of bins
 	noise_floor = [n for n in NoiseEvents]
 	
-	shots = range(1,10,1) #0 - 10 laser shots
+	#shots = range(1,10,1) #0 - 10 laser shots
+	shots = range(1,shots,shot_inc) #0 - 10 laser shots
 	signal_bins = np.floor(2*jitter/bin_time) #2*jitter/bin
 	if signal_bins == 0:
 		signal_bins = 1
