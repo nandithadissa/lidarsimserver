@@ -36,5 +36,6 @@ class SimulationResultsForm(FlaskForm):
 	url_snr = ""
 	url_stats = ""
 	url_tcspc = ""
-	avgPower= ""
-	background = ""
+	parmas = {}
+	#avgPower= ""
+	#background = ""

@@ -116,6 +116,7 @@ def run_simulation(params):	#class object of the Params
 	plt.grid(b=True, which='minor', color='k', linestyle='--', alpha=0.2),
 	plt.xlabel('Distance (m)')
 	plt.ylabel('# events per pulse')
+	plt.title("Number of signal and noise event per pixel",fontsize=12)
 	plt.legend()
 	#plt.show()
 	url_sn_events = 'result_%s.jpg'%(str(uuid4().hex))
@@ -131,6 +132,7 @@ def run_simulation(params):	#class object of the Params
 	plt.grid(b=True, which='minor', color='k', linestyle='--', alpha=0.2),
 	plt.xlabel('Distance (m)')
 	plt.ylabel('SNR (dB)')
+	plt.title(" S/N per pulse",fontsize=12)
 	plt.legend()
 	#plt.show()
 	url_snr = 'result_%s.jpg'%(str(uuid4().hex))
@@ -175,13 +177,14 @@ def stats(D,SignalEvents,NoiseEvents,params): #per pulse
 	#print("detection probabilities for t=%fs, Psig=%.2f, Pnoise=%.2f"%(tmeasure,Psig,Pnoise))
 
 	plt.close()
-	plt.plot(D,Psignal,label='Psignal')
-	plt.plot(D,Pnoise,label='Pnoise')
+	plt.plot(D,Psignal,label='signal')
+	plt.plot(D,Pnoise,label='noise')
 	plt.grid(b=True, which='major', color='k', linestyle='-')
 	plt.minorticks_on()
 	plt.grid(b=True, which='minor', color='k', linestyle='--', alpha=0.2),
 	plt.xlabel('Distance (m)')
 	plt.ylabel('Signal and Noise detection probability')
+	plt.title(" Probability of signal and noise event within the Gate Time",fontsize=12)
 	plt.legend()
 	#plt.show()
 	url_stats = 'result_%s.jpg'%(str(uuid4().hex))
@@ -228,7 +231,8 @@ def tcspc(D,SignalEvents,NoiseEvents,params): #per pulse
 		plt.grid(b=True, which='minor', color='k', linestyle='--', alpha=0.2),
 		plt.xlabel('Distance (m)')
 		plt.ylabel('S/N with for different laser shots (dB)')
-		plt.legend()
+		plt.title(" Improvement of the S/N using multi-laser shots in TCSPC mode",fontsize=12)
+		plt.legend(fontsize=9)
 
 	#plt.show()
 	url_tcspc = 'result_%s.jpg'%(str(uuid4().hex))

@@ -49,6 +49,27 @@ def simulate():
 		resultForm.url_snr = os.path.join(app.config["UPLOAD_FOLDER"],url_snr)
 		resultForm.url_stats = os.path.join(app.config["UPLOAD_FOLDER"],url_stats)
 		resultForm.url_tcspc = os.path.join(app.config["UPLOAD_FOLDER"],url_tcspc)
+		
+		params_dic = {	"Average Power (mW)":params.avgPower,
+						"Rep rate (Hz)": params.repRate,
+						"Background intensity (W/sq-m)":params.BG,
+						"Jitter (ps)":params.jitter,
+						"Reflectivity":params.R,
+						"Filter bandgap (ps)":params.BW,
+						"Pixel size (um)":params.pixelSize,
+						"PDP": params.PDP,
+						"Fill Factor":params.FF,
+						"Lens optical transmission":params.Tlens,
+						"Filter optical transmission":params.Tfilter,
+						"F/#": params.F_no,
+						"Horizontal Field of View (degrees)":params.theta_H,
+						"Vertical Field of View (degrees)":params.theta_V,
+						"DCR (Hz/um2)": params.DCR,
+						"Ragegate time (us)": params.gateTime,
+						"# Bits in counter" : params.registerWidth,
+						"Laser shots for TCSPC mode" : params.laserShots
+					}
+		resultForm.params = params_dic
 		#print(photopath)
 		#resultForm.url = photopath
 		resultForm.avgPower = str(params.avgPower)
