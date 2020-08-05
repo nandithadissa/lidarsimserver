@@ -22,6 +22,7 @@ def simulate():
 	if form.validate_on_submit():
 		params = Params
 		params.avgPower = float(form.avgPower.data)
+		params.repRate = float(form.repRate.data)
 		params.BG = float(form.BG.data)
 		params.jitter = float(form.jitter.data)
 		params.R = float(form.R.data)

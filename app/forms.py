@@ -9,8 +9,9 @@ from wtforms.validators import DataRequired, Email, Length
 class SimulationParamsForm(FlaskForm):
 	'''enter all the parameters form the simulation'''
 	avgPower = StringField('Average Laser Power (mW)', validators= [DataRequired(), Length(max=32)], default=20)
-	BG = StringField('Background (W/m2)', validators= [DataRequired(), Length(max=32)], default=500)
+	repRate = StringField('Laser frequency (Hz)', validators= [DataRequired(), Length(max=32)], default=1000)
 	wavelength = StringField('Wavelength (nm)', validators= [DataRequired(), Length(max=32)], default=780)
+	BG = StringField('Background (W/m2)', validators= [DataRequired(), Length(max=32)], default=500)
 	jitter = StringField('system jitter (ps)', validators= [DataRequired(), Length(max=32)], default=200)
 	R = StringField('target reflectivity (ps)', validators= [DataRequired(), Length(max=32)], default=0.1)
 	PDP = StringField('PDP', validators= [DataRequired(), Length(max=32)], default=0.1)
