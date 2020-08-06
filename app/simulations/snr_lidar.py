@@ -84,7 +84,7 @@ def run_simulation(params):	#class object of the Params
 	print("range:%f m"%range_measure)
 
 	
-	D = np.arange(0,100,0.2) 			#m distance
+	D = np.arange(0,1000,0.2) 			#m distance
 	
 	BW_power = bb_fraction(wavelength,Delta_BW)
 	
@@ -206,10 +206,11 @@ def tcspc(D,SignalEvents,NoiseEvents,params): #per pulse
 	tmeasure = params.gateTime*1E-6 #s
 	shots = int(params.laserShots)	
 	shot_inc = int(shots/10)
+	bits = params.registerWidth
 
 	counter_bits = params.registerWidth
-	bins = 2**12
-	bin_time = 	tmeasure/2**12 #number of bins
+	bins = 2**bits
+	bin_time = 	tmeasure/bins #number of bins
 	noise_floor = [n for n in NoiseEvents]
 	
 	#shots = range(1,10,1) #0 - 10 laser shots
@@ -221,11 +222,14 @@ def tcspc(D,SignalEvents,NoiseEvents,params): #per pulse
 	print("signal_bins=%d"%signal_bins)
 	signal_floor = [n/signal_bins for n in SignalEvents]
 
+	max_distance = 0.5*tmeasure*C
+
 	plt.close()
 	print(shots)
 	for shot in shots:
 		snr = [10*np.log10(shot*sf/nf) for sf,nf in zip(signal_floor,noise_floor)]
 		plt.plot(D,snr,label='shot %d'%shot)
+		plt.xlim(0,max_distance)
 		plt.grid(b=True, which='major', color='k', linestyle='-')
 		plt.minorticks_on()
 		plt.grid(b=True, which='minor', color='k', linestyle='--', alpha=0.2),
