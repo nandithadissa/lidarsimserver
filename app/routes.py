@@ -15,6 +15,10 @@ app.config['UPLOAD_FOLDER'] = os.path.join('static','SimResults')
 def index():
 	return render_template('base.html')
 
+@app.route('/wiki')
+def wiki():
+	return render_template('wiki.html')
+
 @app.route('/simulate',methods=['GET','POST'])
 def simulate():
 	'''submit parameters for a basic simulation of #-events per pulse vs. distance'''
@@ -55,7 +59,7 @@ def simulate():
 						"Background intensity (W/sq-m)":params.BG,
 						"Jitter (ps)":params.jitter,
 						"Reflectivity":params.R,
-						"Filter bandgap (ps)":params.BW,
+						"Filter bandgap (nm)":params.BW,
 						"Pixel size (um)":params.pixelSize,
 						"PDP": params.PDP,
 						"Fill Factor":params.FF,

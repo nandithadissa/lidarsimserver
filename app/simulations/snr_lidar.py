@@ -158,6 +158,7 @@ def stats(D,SignalEvents,NoiseEvents,params): #per pulse
 	'''Pd = P(N=0)*P(S>0) - Probability of no noise counts * non-zero signal count'''
 	
 	tmeasure = params.gateTime*1E-6 #1um range-gate
+	C = constants.c						#speed of light
 
 	'''
 	def P_noise(k):
@@ -175,6 +176,8 @@ def stats(D,SignalEvents,NoiseEvents,params): #per pulse
 	Pnoise = [(pzs)*(1-pzn) for pzn,pzs in zip(Pzero_noise,Pzero_signal)] 
 
 	#print("detection probabilities for t=%fs, Psig=%.2f, Pnoise=%.2f"%(tmeasure,Psig,Pnoise))
+	
+	max_distance = 0.5*tmeasure*C
 
 	plt.close()
 	plt.plot(D,Psignal,label='signal')
@@ -185,6 +188,7 @@ def stats(D,SignalEvents,NoiseEvents,params): #per pulse
 	plt.xlabel('Distance (m)')
 	plt.ylabel('Signal and Noise detection probability')
 	plt.title(" Probability of signal and noise event within the Gate Time",fontsize=12)
+	plt.xlim(0,max_distance)
 	plt.legend()
 	#plt.show()
 	url_stats = 'result_%s.jpg'%(str(uuid4().hex))
